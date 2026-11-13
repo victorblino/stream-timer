@@ -1,0 +1,16 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Timer</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+<body style="font-family:Roboto,sans-serif;font-weight:700;font-variant-numeric:tabular-nums;color:#fff;font-size:15vw;margin:0">
+<div id="t">24:00:00</div>
+<script>
+// 13/11/2026 08:03:16 BRT + 24h
+const end = Date.parse("2026-11-14T08:03:16-03:00");
+const p = n => String(n).padStart(2, "0");
+setInterval(function tick() {
+  const s = Math.max(0, Math.floor((end - Date.now()) / 1000));
+  t.textContent = `${p(s / 3600 | 0)}:${p(s / 60 % 60 | 0)}:${p(s % 60)}`;
+  return tick;
+}(), 250);
+</script>
